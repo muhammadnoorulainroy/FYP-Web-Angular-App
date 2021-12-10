@@ -1,0 +1,200 @@
+<h1>Dashboard</h1>
+
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row" fxLayoutGap="20px" class="stats-cards">
+    <mat-card fxFlex="25%" class="mat-elevation-z4">
+        <h5 class="card-title">Profit in Last Month</h5>
+            <br>
+        <div class="card-container">
+            <div>
+                <h1 class="mb-1 content">Rs. 100K</h1>
+            </div>
+            <div class="text-success">
+                <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25%" class="mat-elevation-z4">
+        <h5 class="card-title">Profit in Last Year</h5>
+        <br>
+        <div class="card-container">
+            <div >
+                <h1 class="mb-1 content">Rs. 1M</h1>
+            </div>
+            <div class="text-success">
+                <span><i class="fa fa-fw fa-arrow-up"></i></span><span>35.23%</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Year</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25%" class="mat-elevation-z4">
+        <h5 class="card-title">Maintainance Expenses</h5>
+        <br>
+        <div class="card-container">
+            <div class="metric-value d-inline-block">
+                <h1 class="mb-1 content">Rs. 30K</h1>
+            </div>
+            <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
+                <span><i class="fa fa-fw fa-arrow-down"></i></span><span>3.50%</span>
+            </div>
+        </div>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25%" class="mat-elevation-z4">
+        <h5 class="card-title">Avg. Profit per Student</h5>
+        <br>
+        <div class="card-container">
+            <div class="metric-value d-inline-block">
+                <h1 class="mb-1 content">Rs. 50K</h1>
+            </div>
+            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+</div>
+
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+    <mat-card fxFlex="25">
+        <h5 class="card-title">Vehicles</h5>
+        <br>
+        <div class="metric-value d-inline-block">
+            <h1 class="mb-1 content">Rs. 100K</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25">
+        <h5 class="card-title">Profit in Last Year</h5>
+        <br>
+        <div class="metric-value d-inline-block">
+            <h1 class="mb-1 content">Rs. 1M</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>35.23%</span>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Year</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25">
+        <h5 class="card-title">Maintainance Expenses</h5>
+        <br>
+        <div class="metric-value d-inline-block">
+            <h1 class="mb-1 content">Rs. 30K</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
+            <span><i class="fa fa-fw fa-arrow-down"></i></span><span>3.50%</span>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card fxFlex="25">
+        <h5 class="card-title">Avg. Profit per Student</h5>
+        <br>
+        <div class="metric-value d-inline-block">
+            <h1 class="mb-1 content">Rs. 50K</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p class="card-des">Total Profit Earned in Previous Month</p>
+        </div>
+
+    </mat-card>
+</div> -->
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <h3 class='card-title'>Recent Complaints</h3>
+        <table class="table table-hover complaint">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let complaint of complaints;let i = index'>
+                    <td>{{i+1}}</td>
+                    <td>{{complaint?.title}}</td>
+                    <td>{{complaint?.description}}</td>
+                    <td>
+                        <span *ngIf="complaint.status==='Pending'"
+                            [ngStyle]="{'color': 'white', 'padding': '5px 19px', 'border':'4px', 'border-radius':'10px', 'background':'#ddbe0b'}">
+                            {{complaint.status}}
+                        </span>
+                        <span *ngIf="complaint.status==='In Progress'"
+                            [ngStyle]="{'color': 'white', 'padding': '5px 10px', 'border':'4px', 'border-radius':'10px', 'background':'blue'}">
+                            {{complaint.status}}
+                        </span>
+                        <span *ngIf="complaint.status==='Rejected'"
+                            [ngStyle]="{'color': 'white', 'padding': '5px 20px', 'border':'4px', 'border-radius':'10px', 'background':'red'}">
+                            {{complaint.status}}
+                        </span>
+                        <span *ngIf="complaint.status==='Resolved'"
+                            [ngStyle]="{'color': 'white', 'padding': '5px 17px', 'border':'4px', 'border-radius':'10px', 'background':'green'}">
+                            {{complaint.status}}
+                        </span>
+                    </td>
+                    <td> <button class="btn view-btn">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

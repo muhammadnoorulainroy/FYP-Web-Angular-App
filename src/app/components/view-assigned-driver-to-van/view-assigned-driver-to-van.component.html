@@ -1,0 +1,37 @@
+<br />
+<div class="d-flex flex-column align-items-center">
+    <img class="van-img" src="../../../assets/images/driver_add.png" id="driver-img" width="100%" height="100%"><br />
+    <h2>Driver Profile</h2>
+</div>
+
+  <div class="container mt-3">  
+      <mat-card class="mat-elevation-z8">
+        <table class="table table-striped">
+            <tbody>
+              <tr>
+                  <th>Full Name</th>
+                  <td *ngIf="this.driverDetails!=null">{{this.driverDetails.fullName}}</td>
+                </tr>
+              <tr>
+                  <th>Phone No.</th>
+                  <td *ngIf="this.driverDetails!=null">{{this.driverDetails.phone_No}}</td>
+              </tr>
+              <tr>
+                  <th>Email</th>
+                  <td *ngIf="this.driverDetails!=null">{{this.driverDetails.email}}</td>
+              </tr>
+              <tr>
+                  <th>Date of Birth</th>
+                  <td *ngIf="this.driverDetails!=null">{{this.driverDetails.age}}</td>
+              </tr>
+              <tr>
+                  <th>Address</th>
+                  <td *ngIf="this.driverDetails!=null">{{this.driverDetails.haddress}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+      </mat-card>   
+    
+  </div>
+  

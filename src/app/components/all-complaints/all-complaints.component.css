@@ -1,0 +1,131 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  *{
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .van-img{
+    box-sizing: border-box;
+    width:149px;
+    height:149px;
+    border-radius:50%;
+    margin:0;
+    border:1px solid #0082e6;
+    padding: 3px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 1s;
+    }
+    
+    .complaint-modal th{
+        background-color: #fff;
+        color: black;
+    }
+
+    .action th{
+        background-color: #fff;
+        color: black;
+    }
+
+.stats-cards mat-card{
+    margin: 10px;
+}
+
+.my-card-content {
+    padding: 16px;
+  }
+
+  .my-card {
+    height: 350px;
+    width: 350px;
+  }
+
+  .card-title{
+    font-size: 1rem;
+    color: #777;
+    padding-right: 2rem;
+  }
+.content{
+   font-size: 2.0rem;
+   font-weight: 1000;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  table {
+      width: 100%;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 20%;
+      margin-left: 10px;
+     
+    }
+    
+    td, th {
+      width: 25%;
+    }
+    th{
+      color: #fff;
+      background:rgb(4, 3, 70);
+      font-size: 14px;
+  }
+  
+  .assignBtn{
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 2px 5px;
+    /* width: 200px;
+    height: 50px; */
+    text-align: center;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+  
+  .assignBtn:hover:after{
+    content: "Reply";
+  }    
+  
+  .deleteBtn:hover:after{
+    content: "Delete";
+  }    
+  
+  .assignBtn:hover{
+    background-color: rgb(17, 100, 21);
+    color: #fff;
+    transition: 0.5s;
+  }
+  .deleteBtn:hover{
+    background-color: rgb(163, 12, 12);
+    color: #fff;
+    transition: 0.5s;
+  }
+  
+  .deleteBtn{
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    color: red;
+    padding: 5px 5px;
+    /* width: 200px;
+    height: 50px; */
+    text-align: center;
+    transition: 0.5s;
+  }
+  
+  
+  .hide{
+    display: none;
+  }
+  
+  /* mat-table */
+  mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+  }

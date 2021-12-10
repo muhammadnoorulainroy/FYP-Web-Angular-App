@@ -1,0 +1,65 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900;400;500&display=swap');
+.stats-cards{
+    display: flex;
+    flex-direction: row;
+}
+
+.stats-cards mat-card{
+    margin: 10px;
+}
+
+.my-card-content {
+    padding: 16px;
+  }
+
+  .my-card {
+    height: 350px;
+    width: 350px;
+  }
+
+  mat-card{
+      height: 200px;
+      width: 250px;
+      overflow: hidden;
+  }
+
+  .card-title{
+    font-size: 1rem;
+    color: #777;
+    padding-right: 2rem;
+  }
+.content{
+   font-size: 2.0rem;
+   font-weight: 1000;
+}
+
+/* Style buttons */
+.view-btn {
+    font-size: 16px;
+    transition: 0.5s;
+  }
+  
+  /* Darker background on mouse-over */
+  .view-btn:hover {
+    background-color: rgb(21, 109, 9);
+    border: none; 
+    border-radius: 10px;
+    color: rgb(255, 255, 255); 
+    padding: 10px 22px; 
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .complaint{
+      justify-content: center;
+      align-items: center;
+  }
+
+  .complaint thead{
+      color: #fff;
+      background:rgb(4, 3, 70);
+  }
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+  }

@@ -1,0 +1,44 @@
+.van-img{
+    box-sizing: border-box;
+    width:149px;
+    height:149px;
+    border-radius:50%;
+    margin:0;
+    border:1px solid #0082e6;
+    padding: 3px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 1s;
+    }
+    
+    .add-van{
+        border: none;
+        background-color: gray;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: medium;
+        border-radius: 30px;
+        padding: 10px 15px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.5s;
+    }
+
+    .add-van:hover{
+        border: none;
+        background-color: green;
+        color: #fff;
+        border-radius: 30px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .example-full-width {
+        width: 100%;
+      }

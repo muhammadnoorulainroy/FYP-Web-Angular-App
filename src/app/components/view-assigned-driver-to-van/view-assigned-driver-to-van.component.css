@@ -1,0 +1,23 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  *{
+    font-family: 'Poppins', sans-serif;
+  }
+
+.van-img{
+    box-sizing: border-box;
+    width:149px;
+    height:149px;
+    border-radius:50%;
+    margin:0;
+    border:1px solid #0082e6;
+    padding: 3px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 1s;
+    }
+  
+    .container{
+      padding-left: 10%;
+      padding-right: 10%;
+    }
