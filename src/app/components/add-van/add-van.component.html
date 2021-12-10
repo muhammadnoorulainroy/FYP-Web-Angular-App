@@ -72,13 +72,13 @@
         <div class="mb-3 col-4">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Manufacturer</mat-label>
-                <input type="text" matInput [formControl]="onlyalpha" [errorStateMatcher]="matcher"
+                <input type="text" matInput [formControl]="make" [errorStateMatcher]="matcher"
                        placeholder="Toyota">
                 <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
-                <mat-error *ngIf="onlyalpha.hasError('pattern') && !onlyalpha.hasError('required')">
+                <mat-error *ngIf="make.hasError('pattern') && !make.hasError('required')">
                   Please enter valid Manufacturer Name
                 </mat-error>
-                <mat-error *ngIf="onlyalpha.hasError('required')">
+                <mat-error *ngIf="make.hasError('required')">
                   Manufacturer name is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
@@ -86,13 +86,13 @@
         <div class="mb-3 col-4">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Model</mat-label>
-                <input type="text" matInput [formControl]="alphanumeric" [errorStateMatcher]="matcher"
+                <input type="text" matInput [formControl]="model" [errorStateMatcher]="matcher"
                        placeholder="Hiace">
                 <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
-                <mat-error *ngIf="alphanumeric.hasError('pattern') && !alphanumeric.hasError('required')">
+                <mat-error *ngIf="model.hasError('pattern') && !model.hasError('required')">
                   Please enter valid Model Name
                 </mat-error>
-                <mat-error *ngIf="alphanumeric.hasError('required')">
+                <mat-error *ngIf="model.hasError('required')">
                   Model name is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
@@ -100,17 +100,89 @@
         <div class="mb-3 col-4">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Year</mat-label>
-                <input type="text" matInput [formControl]="alphanumeric" [errorStateMatcher]="matcher"
-                       placeholder="Hiace">
+                <input type="number" matInput [formControl]="year" [errorStateMatcher]="matcher"
+                       placeholder="2016" [min]="2000" [max]="2022">
                 <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
-                <mat-error *ngIf="alphanumeric.hasError('pattern') && !alphanumeric.hasError('required')">
-                  Please enter valid Model Name
+                <mat-error *ngIf=" (year.hasError('min') || year.hasError('max')) && !year.hasError('required')">
+                  Van's Model Year must not be older than 2000 and newer than the current year.
                 </mat-error>
-                <mat-error *ngIf="alphanumeric.hasError('required')">
-                  Model name is <strong>required</strong>
+                <mat-error *ngIf="year.hasError('required')">
+                  Year is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
         </div>
     </div>
+
+    <div class="row">
+        <div class="mb-3 col-4">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Vehicle No.</mat-label>
+                <input type="text" matInput [formControl]="vehicleNo" [errorStateMatcher]="matcher"
+                       placeholder="LEA2020">
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="(vehicleNo.hasError('pattern') || !vehicleNo.hasError('maxLength')) && !vehicleNo.hasError('required')">
+                  Please enter valid Vehicle Registeration No.
+                </mat-error>
+                <mat-error *ngIf="vehicleNo.hasError('required')">
+                  Manufacturer name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="mb-3 col-4">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Sitting Capacity</mat-label>
+                <input type="number" matInput [formControl]="sittingCapacity" [errorStateMatcher]="matcher"
+                       placeholder="25">
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="(sittingCapacity.hasError('min') || sittingCapacity.hasError('max')) && !sittingCapacity.hasError('required')">
+                  Please enter valid Sitting Capacity (must be greater than 0 and less than 80)
+                </mat-error>
+                <mat-error *ngIf="sittingCapacity.hasError('required')">
+                  Model name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="mb-3 col-4">
+            <mat-form-field  class="example-full-width" appearance="fill">
+                <mat-label>Fuel Type</mat-label>
+                <mat-select matInput [formControl]="selectionItems" [errorStateMatcher]="matcher">
+                  <mat-option *ngFor="let type of fuelTypes" [value]="type.value">
+                    {{type.viewValue}}
+                  </mat-option>
+                </mat-select>
+                  <mat-error *ngIf="selectionItems.hasError('required')">
+                    Fuel Type is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
     
+    <div class="row">
+        <div class="mb-3 col-6">
+            <mat-form-field  class="example-full-width" appearance="fill">
+                <mat-label>Student Category</mat-label>
+                <mat-select matInput [formControl]="selectionItems2" [errorStateMatcher]="matcher">
+                  <mat-option *ngFor="let category of stdCategories" [value]="category.value">
+                    {{category.viewValue}}
+                  </mat-option>
+                </mat-select>
+                  <mat-error *ngIf="selectionItems2.hasError('required')">
+                   Student Category is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="mb-3 col-6">
+            <mat-form-field  class="example-full-width" appearance="fill">
+                <mat-label>Air Conditioned</mat-label>
+                <mat-select matInput [formControl]="selectionItems3" [errorStateMatcher]="matcher">
+                  <mat-option *ngFor="let type of airCond" [value]="type.value">
+                    {{type.viewValue}}
+                  </mat-option>
+                </mat-select>
+                  <mat-error *ngIf="selectionItems3.hasError('required')">
+                    Status of Air Conditioned is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
   </form>

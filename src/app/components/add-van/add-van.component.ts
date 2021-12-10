@@ -25,17 +25,44 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+interface SelectOptions {
+  value: string;
+  viewValue: string;
+}
+
+
 @Component({
   selector: 'app-add-van',
   templateUrl: './add-van.component.html',
   styleUrls: ['./add-van.component.css']
 })
 export class AddVanComponent implements OnInit {
+
+  fuelTypes: SelectOptions[] = [
+    {value: 'Petrol', viewValue: 'Petrol'},
+    {value: 'Diesel', viewValue: 'Diesel'},
+    {value: 'CNG/LNG/LPG', viewValue: 'CNG/LNG/LPG'},
+  ];
+
+  airCond: SelectOptions[]=[
+    {value: 'Yes', viewValue: 'Yes'},
+    {value: 'No', viewValue: 'No'},
+  ];
+
+  stdCategories: SelectOptions[]=[
+    {value: 'Boys', viewValue: 'Boys'},
+    {value: 'Boys', viewValue: 'Boys'},
+  ];
   
   vans:Van = new Van;
-  onlyalpha = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^[a-zA-Z ]*$')]);
-  alphanumeric = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
-
+  make = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^[a-zA-Z ]*$')]);
+  model = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
+  year = new FormControl('', [Validators.required,Validators.max(2022),Validators.min(2000)]);
+  vehicleNo =  new FormControl('', [Validators.required,Validators.maxLength(8),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
+  sittingCapacity = new FormControl('', [Validators.required,Validators.max(80),Validators.min(0)]);
+  selectionItems =  new FormControl('', [Validators.required]);
+  selectionItems2 =  new FormControl('', [Validators.required]);
+  selectionItems3 =  new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
   constructor(private firebase: AngularFireDatabase, private modalService: NgbModal) { }
@@ -86,16 +113,5 @@ export class AddVanComponent implements OnInit {
     // alert('Van has been Added Successfully');
   }
 
-  keyPressAlphanumeric(event: { keyCode: number; preventDefault: () => void; }) {
-
-    var inp = String.fromCharCode(event.keyCode);
-
-    if (/[a-zA-Z]/.test(inp)) {
-      return true;
-    } else {
-      event.preventDefault();
-      return false;
-    }
-  }
 
 }

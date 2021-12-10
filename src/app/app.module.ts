@@ -42,7 +42,7 @@ import { StudentsTabComponent } from './components/students-tab/students-tab.com
 import { AllStudentsComponent } from './components/all-students/all-students.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { AssignDriverToStudentComponent } from './components/assign-driver-to-student/assign-driver-to-student.component'
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { DriversTabComponent } from './components/drivers-tab/drivers-tab.component';
 import { AddDriverComponent } from './components/add-driver/add-driver.component';
 import { AllDriversComponent } from './components/all-drivers/all-drivers.component';
@@ -52,6 +52,7 @@ import { ComplaintFeedbackComponent } from './components/all-complaints/complain
 import { ViewVanTabComponent } from './components/view-van-tab/view-van-tab.component';
 import { ViewAssignedDriverToVanComponent } from './components/view-assigned-driver-to-van/view-assigned-driver-to-van.component';
 import { ViewVanDetailsComponent } from './components/view-van-details/view-van-details.component';
+import { MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -106,8 +107,11 @@ import { ViewVanDetailsComponent } from './components/view-van-details/view-van-
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    
   ],
-  providers: [AuthService, LoadingServiceService, {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi:true}],
+  providers: [AuthService, LoadingServiceService, {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi:true}, ],
   bootstrap: [AppComponent],
   entryComponents:[AssignVanToDriverComponent,AssignDriverToStudentComponent, ComplaintFeedbackComponent]
 })
