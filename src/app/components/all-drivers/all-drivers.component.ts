@@ -13,8 +13,16 @@ import { VansService } from '../firebase-service';
 })
 export class AllDriversComponent implements OnInit {
 
+  totalDrivers = 0;
+  totalBoysDrivers = 0;
+  totalGirlsDrivers = 0;
+  totalUnassignedDrivers = 0;
+  tDrivers=false;
+  tBoysDrivers=false;
+  tGirlsDrivers = false;
+  unassignedDrivers = false;
+
   displayedColumns: string[] = ['fullName', 'gender','dob',  'homeAddr','email', 'phone', 'actions'];
- 
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -39,6 +47,33 @@ export class AllDriversComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     );
+    this.firebase.database.ref('Drivers').on('value', (allrecords) => {
+      this.totalBoysDrivers = 0
+      this.totalGirlsDrivers = 0
+      this.totalDrivers = 0
+      this.totalUnassignedDrivers = 0;
+      allrecords.forEach(currRecord => {
+        if (!currRecord.child('Van').exists()) {
+          this.totalUnassignedDrivers++;
+        }
+        else{
+          let van = this.firebase.database.ref('Vans/'+currRecord.child('Van').val());
+          van.once('value', (vanData)=>{
+            if(vanData.child('stdCategory').val()=="Boys")
+              this.totalBoysDrivers++;
+            else
+              this.totalGirlsDrivers++;
+          })
+        }
+        this.totalDrivers++
+      });
+      setTimeout(()=>{
+        this.tDrivers= true;
+      this.unassignedDrivers= true;
+      this.tGirlsDrivers = true;
+      this.tBoysDrivers = true;
+      },50)
+    });
   }
 
   applyFilter(event: Event) {
@@ -61,5 +96,28 @@ export class AllDriversComponent implements OnInit {
       this.dataSource.data.splice(rowid, 1);
       this.dataSource._updateChangeSubscription(); // <-- Refresh the datasource
     }
+  }
+
+  checkAssignedVanStudent(phone: string) {
+    let exists = false;
+    this.firebase.database.ref('Drivers/' + phone).child('Van').once('value', function (snapshot) {
+      exists = snapshot.exists();
+    })
+    this.firebase.database.ref('Drivers/' + phone).child('students').once('value', function (snapshot) {
+      exists = snapshot.exists();
+    })
+    return exists;
+  }
+
+  openViewStudentTab(row: any) {
+    this.vanService.setDriverPhoneNo(row.Driver);
+    let driver = this.firebase.database.ref('Drivers/'+row.Driver);
+    driver.once('value', (assignedDriver=>{
+      if(assignedDriver.child('Van').exists()){
+        this.vanService.setVanNo(assignedDriver.child('Van').val());
+       // this.router.navigate(["admin/studentdetails/viewassignedvantostudent"]);
+        return;
+      }
+    }))
   }
 }

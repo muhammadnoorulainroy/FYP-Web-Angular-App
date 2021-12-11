@@ -54,7 +54,8 @@
       font-size: 14px;
   }
   
-  .assignBtn{
+  
+  .assignBtn, .unassignBtn, .viewBtn{
     border: none;
     border-radius: 20px;
     background-color: #fff;
@@ -66,21 +67,33 @@
     text-decoration: none;
   }
   
+  .viewBtn:hover:after{
+    content: "View";
+    padding-left: 7px;
+  }  
+  
   .assignBtn:hover:after{
     content: "Assign";
-  }    
+    padding-left: 7px;
+  }  
+  
+  .unassignBtn:hover:after{
+    content: "Unassign";
+    padding-left: 7px;
+  }  
   
   .deleteBtn:hover:after{
     content: "Delete";
+    padding-left: 7px;
   }    
   
-  .assignBtn:hover{
+  .assignBtn:hover, .viewBtn:hover{
     background-color: rgb(17, 100, 21);
     color: #fff;
     transition: 0.5s;
   }
-  .deleteBtn:hover{
-    background-color: rgb(163, 12, 12);
+  .deleteBtn:hover, .unassignBtn:hover{
+    background-color: rgb(136, 16, 16);
     color: #fff;
     transition: 0.5s;
   }
@@ -90,7 +103,7 @@
     border-radius: 20px;
     background-color: #fff;
     color: red;
-    padding: 10px 15px;
+    padding: 2px 5px;
     /* width: 200px;
     height: 50px; */
     text-align: center;
@@ -106,4 +119,116 @@
   mat-footer-row mat-footer-cell{
     justify-content: center;
     font-style: italic;
+  }
+
+  .mat-column-fullName {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-gender {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-dob {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-email {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-email {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-phone {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 13% !important;
+    width: 13% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-homeAddr {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+ 
+
+  .mat-column-actions {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 25% !important;
+    width: 25% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
   }

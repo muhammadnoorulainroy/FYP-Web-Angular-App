@@ -12,7 +12,7 @@
 </div>
 
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" *ngIf="dataSource!=null && dataSource.data.length!=0">
     <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- ID Column -->
@@ -30,7 +30,7 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="Action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-            <td mat-cell *matCellDef="let row; let j = index;"> <button class="assignBtn" (click)="deleteTicket(row,j)"><i class="fas fa-link"></i>
+            <td mat-cell *matCellDef="let row; let j = index;"> <button class="assignBtn" (click)="assignDriver(row,j)"><i class="fas fa-link"></i>
             </button> </td>
         </ng-container>
 
@@ -61,4 +61,8 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+<div [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}" class="alert alert-danger">
+    <p>Currently No Driver is Available for {{studentGender}} Students to Assign</p>
+    <p><strong>Note:</strong> Assign driver a van first to make it available for Student Assignment</p>
 </div>

@@ -53,6 +53,12 @@ import { ViewVanTabComponent } from './components/view-van-tab/view-van-tab.comp
 import { ViewAssignedDriverToVanComponent } from './components/view-assigned-driver-to-van/view-assigned-driver-to-van.component';
 import { ViewVanDetailsComponent } from './components/view-van-details/view-van-details.component';
 import { MatSelectModule} from '@angular/material/select';
+import { ViewStudentTabComponent } from './components/view-student-tab/view-student-tab.component';
+import { ViewVanStudentDetailsComponent } from './components/view-van-student-details/view-van-student-details.component';
+import { ViewAssignedDriverToStudentComponent } from './components/view-assigned-driver-to-student/view-assigned-driver-to-student.component';
+import { ViewDriverTabComponent } from './components/view-driver-tab/view-driver-tab.component';
+import { ViewAssignedStudentsToDriverComponent } from './components/view-assigned-students-to-driver/view-assigned-students-to-driver.component';
+import { ViewAssignedVanToDriverComponent } from './components/view-assigned-van-to-driver/view-assigned-van-to-driver.component';
 
 
 @NgModule({
@@ -79,6 +85,12 @@ import { MatSelectModule} from '@angular/material/select';
     ViewVanTabComponent,
     ViewAssignedDriverToVanComponent,
     ViewVanDetailsComponent,
+    ViewStudentTabComponent,
+    ViewVanStudentDetailsComponent,
+    ViewAssignedDriverToStudentComponent,
+    ViewDriverTabComponent,
+    ViewAssignedStudentsToDriverComponent,
+    ViewAssignedVanToDriverComponent,
   ],
   imports: [
     BrowserModule,

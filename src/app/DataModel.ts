@@ -2,7 +2,7 @@ export class Van {
     constructor(
         public vehicleNo?: string,
         public model?: string,
-        public capacity?: Number,
+        public capacity?: string,
         public ac?: boolean,
         public make?: string,
         public fuelType?: string,
@@ -50,6 +50,7 @@ export class Student {
             public haddress: string = "",
             public age: string = "",
             public gender: string = "",
+
 
     ) { }
 }

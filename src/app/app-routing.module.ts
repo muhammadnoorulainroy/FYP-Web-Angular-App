@@ -23,6 +23,9 @@ import { AllComplaintsComponent } from './components/all-complaints/all-complain
 import { ViewVanTabComponent } from './components/view-van-tab/view-van-tab.component';
 import { ViewVanDetailsComponent } from './components/view-van-details/view-van-details.component';
 import { ViewAssignedDriverToVanComponent } from './components/view-assigned-driver-to-van/view-assigned-driver-to-van.component';
+import { ViewStudentTabComponent } from './components/view-student-tab/view-student-tab.component';
+import { ViewVanStudentDetailsComponent } from './components/view-van-student-details/view-van-student-details.component';
+import { ViewAssignedDriverToStudentComponent } from './components/view-assigned-driver-to-student/view-assigned-driver-to-student.component';
 
 const routes: Routes = [
 
@@ -40,39 +43,48 @@ const routes: Routes = [
       {
         path: 'van', component: VanTabComponent, data: { title: 'Vans' },
         children: [
-          { path: 'allvans', component: AllVansComponent, data: { title: 'Van Dashboard' }},
-          { path: 'addvan', component: AddVanComponent, data: { title: 'Add New Van' }},
-          { path: 'assignvan', component: AssignVanToDriverComponent, data: { title: 'Assign Driver' }},
+          { path: 'allvans', component: AllVansComponent, data: { title: 'Van Dashboard' } },
+          { path: 'addvan', component: AddVanComponent, data: { title: 'Add New Van' } },
+          { path: 'assignvan', component: AssignVanToDriverComponent, data: { title: 'Assign Driver' } },
         ]
       },
-      { path: 'vandetails', component: ViewVanTabComponent, data: { title: 'Van Details' },
-            children: [
-              { path: 'viewvandetails', component: ViewVanDetailsComponent, data: { title: 'Van Details' }},
-              { path: 'viewassigneddrivertovan', component: ViewAssignedDriverToVanComponent, data: { title: 'Assigned Driver Details' }},
-            ]
-          },
+      {
+        path: 'vandetails', component: ViewVanTabComponent, data: { title: 'Van Details' },
+        children: [
+          { path: 'viewvandetails', component: ViewVanDetailsComponent, data: { title: 'Van Details' } },
+          { path: 'viewassigneddrivertovan', component: ViewAssignedDriverToVanComponent, data: { title: 'Assigned Driver Details' } },
+        ]
+      },
+      {
+        path: 'studentdetails', component: ViewStudentTabComponent, data: { title: 'Student Details' },
+        children: [
+          { path: 'viewassignedvantostudent', component: ViewVanStudentDetailsComponent, data: { title: 'Van Details' } },
+          { path: 'viewassigneddrivertostudent', component: ViewAssignedDriverToStudentComponent, data: { title: 'Assigned Driver Details' } },
+        ]
+      },
+
       {
         path: 'students', component: StudentsTabComponent, data: { title: 'Students' },
         children: [
-          { path: 'allstudents', component: AllStudentsComponent, data: { title: 'Student Dashboard' }},
-          { path: 'addstudent', component: AddStudentComponent, data: { title: 'Add New Student' }},
-          { path: 'assigndriver', component: AssignDriverToStudentComponent, data: { title: 'Assign Driver' }},
+          { path: 'allstudents', component: AllStudentsComponent, data: { title: 'Student Dashboard' } },
+          { path: 'addstudent', component: AddStudentComponent, data: { title: 'Add New Student' } },
+          { path: 'assigndriver', component: AssignDriverToStudentComponent, data: { title: 'Assign Driver' } },
         ]
       },
       {
         path: 'drivers', component: DriversTabComponent, data: { title: 'Drivers' },
         children: [
-          { path: 'alldrivers', component: AllDriversComponent, data: { title: 'Driver Dashboard' }},
-          { path: 'adddriver', component: AddDriverComponent, data: { title: 'Add New Driver' }},
+          { path: 'alldrivers', component: AllDriversComponent, data: { title: 'Driver Dashboard' } },
+          { path: 'adddriver', component: AddDriverComponent, data: { title: 'Add New Driver' } },
         ]
       },
       {
         path: 'complaints', component: ComplaintsTabComponent, data: { title: 'Complaints' },
         children: [
-          { path: 'allcomplaints', component: AllComplaintsComponent, data: { title: 'Complaints Dashboard' }},
+          { path: 'allcomplaints', component: AllComplaintsComponent, data: { title: 'Complaints Dashboard' } },
         ]
       },
-      
+
       { path: 'home', component: HomepageComponent, data: { title: 'Dashboard' } },
 
     ]

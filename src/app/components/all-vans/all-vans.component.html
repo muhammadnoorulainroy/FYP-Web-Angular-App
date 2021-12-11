@@ -144,8 +144,7 @@
             <button *ngIf="!checkAssignedDriver(row.vehicleNo)" class="assignBtn" (click)="openDialog(row)"><i class="fas fa-link"></i></button>
             <button *ngIf="!checkAssignedDriver(row.vehicleNo)" class="deleteBtn" (click)="deleteVan(row,j)"><i class="far fa-trash-alt"></i></button>
             <button *ngIf="checkAssignedDriver(row.vehicleNo)" class="viewBtn" (click)="openViewVanTab(row)"><i class="fas fa-eye"></i></button>
-            <button *ngIf="checkAssignedDriver(row.vehicleNo)" class="unassignBtn" (click)="unassignDriver(row)"><i class="fas fa-unlink"></i></button>
-            
+            <button *ngIf="checkAssignedDriver(row.vehicleNo)" class="unassignBtn" (click)="unassignDriver(row)"><i class="fas fa-unlink"></i></button>           
     </td>
     </ng-container>
   

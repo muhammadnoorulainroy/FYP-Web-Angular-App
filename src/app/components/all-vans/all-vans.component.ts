@@ -1,6 +1,5 @@
-import * as $ from 'jquery'
+
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,7 +8,6 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { VansService } from '../firebase-service';
 import { AssignVanToDriverComponent } from '../assign-van-to-driver/assign-van-to-driver.component';
-import { ThrowStmt } from '@angular/compiler';
 
 export interface Van {
   make: string;
@@ -24,20 +22,6 @@ export class Driver {
   fullName!: string
   phoneNo!: string
 }
-
-const ELEMENT_DATA: Van[] = [
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' },
-  // { make: 'Suzuki', model: 'Bolan 2020', fuelType: 'Petrol', capacity: '15', for: 'Boys', assignedTo: 'Mr. Ali' }
-];
 
 export interface Van {
   make: string;
@@ -60,13 +44,12 @@ export interface Van {
 
 export class AllVansComponent implements OnInit {
   availableDrivers: Driver[] = [];
-
   totalVans = 0;
   totalBoysVans = 0;
   totalGirlsVans = 0;
   totalUnassignedVans = 0;
-  tVans = false;
-  tBoysVans = false;
+  tVans=false;
+  tBoysVans=false;
   tGirlsVans = false;
   unassignedVans = false;
   driver: Driver = new Driver;
@@ -114,36 +97,26 @@ export class AllVansComponent implements OnInit {
       allrecords.forEach(currRecord => {
         if (currRecord.child('stdCategory').val() === "Boys") {
           this.totalBoysVans++;
-          this.tBoysVans = true;
         }
         else {
           this.totalGirlsVans++;
-          this.tGirlsVans = true;
         }
         if (currRecord.child('Driver').exists()) {
-
         }
         else {
           this.totalUnassignedVans++;
-          this.unassignedVans = true;
         }
         this.totalVans++
-        this.tVans = true;
+        
       });
+      this.tVans = true;
+      this.unassignedVans = true;
+      this.tGirlsVans = true;
+      this.tBoysVans = true;
     });
 
   }
 
-  allVans = async () => {
-    let v = 0;
-    this.firebase.database.ref('Vans').on('value', (allrecords) => {
-      allrecords.forEach(currRecord => {
-        //alert('a');
-        v++
-      });
-    });
-    return v;
-  }
 
   openDialog(row: any) {
     this.vanService.setVanNo(row.vehicleNo);
@@ -186,15 +159,7 @@ export class AllVansComponent implements OnInit {
         alert('Driver ' + currDriver.child('fullName').val() + ' has been removed from ' + row.make + ' ' + row.model + ' ' + row.year)
       }
     })
-    //this.getDriverName(row.driver);
-    // setTimeout(()=>{
-    //   if(confirm('Are you sure to remove the driver '+this.driver.fullName+' from '+row.make+' '+row.model+' '+row.year)){
-    //     let vanNo = this.vanService.getVanNo();
-    //     this.firebase.database.ref('Vans/'+vanNo).update({Driver:row.phone_No});
-    //     this.firebase.database.ref('Drivers/'+row.phone_No).update({Van:vanNo});
-    //     alert('Driver Assigned Successfully')
-    //   }
-    // },5000);
+
   }
 
   getDriverName(driverPhoneNo: string) {

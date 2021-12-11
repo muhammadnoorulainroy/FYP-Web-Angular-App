@@ -33,3 +33,6 @@
         cursor: pointer;
         transition: 0.5s;
     }
+    .example-full-width {
+        width: 100%;
+      }

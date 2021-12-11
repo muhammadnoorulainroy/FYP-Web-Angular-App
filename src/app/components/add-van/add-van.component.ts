@@ -51,12 +51,12 @@ export class AddVanComponent implements OnInit {
 
   stdCategories: SelectOptions[]=[
     {value: 'Boys', viewValue: 'Boys'},
-    {value: 'Boys', viewValue: 'Boys'},
+    {value: 'Girls', viewValue: 'Girls'},
   ];
   
   vans:Van = new Van;
-  make = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^[a-zA-Z ]*$')]);
-  model = new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
+  make = new FormControl('', [Validators.required,Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]);
+  model = new FormControl('', [Validators.required,Validators.maxLength(30),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
   year = new FormControl('', [Validators.required,Validators.max(2022),Validators.min(2000)]);
   vehicleNo =  new FormControl('', [Validators.required,Validators.maxLength(8),Validators.pattern('^([A-Za-z0-9]{0,})$')]);
   sittingCapacity = new FormControl('', [Validators.required,Validators.max(80),Validators.min(0)]);
