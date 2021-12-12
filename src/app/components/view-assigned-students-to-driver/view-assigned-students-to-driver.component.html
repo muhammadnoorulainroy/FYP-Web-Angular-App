@@ -1,1 +1,73 @@
-<p>view-assigned-students-to-driver works!</p>
+<br />
+  <div class="container mt-3">  
+      <mat-card class="mat-elevation-z8">
+        <div class="d-flex flex-column align-items-center">
+            <img class="van-img" src="../../../assets/images/multiple_students.png" id="students-img" width="100%" height="100%"><br />
+            <h2>Assigned Students</h2>
+        </div>
+        <mat-form-field>  
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ali" #input>
+          </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+            <!-- ID Column -->
+            <ng-container matColumnDef="fullName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name</th>
+              <td mat-cell *matCellDef="let row"> {{row.fullName}} </td>
+            </ng-container>
+      
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone. No </th>
+              <td mat-cell *matCellDef="let row"> {{row.phone_No}} </td>
+            </ng-container>
+      
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="homeAddr">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Home Address </th>
+              <td mat-cell *matCellDef="let row"> {{row.haddress}} </td>
+            </ng-container>
+      
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="schoolAddr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> School Address </th>
+                <td mat-cell *matCellDef="let row"> {{row.iaddress}} </td>
+              </ng-container>
+            
+      
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+              <td mat-cell *matCellDef="let row; let j = index;"> 
+                  <!-- <button class="assignBtn" (click)="openDialog()"><i class="fas fa-link"></i></button> -->
+                  <button class="unassignBtn" (click)="unassignDriver(row,j)"><i class="fas fa-unlink"></i></button>     
+          </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                Loading data...
+              </mat-footer-cell>
+            </ng-container>
+      
+            
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></tr>
+          
+        
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row alert alert-danger" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data to show</td>
+            </tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        
+      </mat-card>   
+    
+  </div>
+  

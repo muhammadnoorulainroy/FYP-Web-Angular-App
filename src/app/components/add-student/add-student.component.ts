@@ -55,8 +55,12 @@ export class AddStudentComponent implements OnInit {
     this.maxDate = new Date(currentYear + 0, 11, 31);
   }
 
-  createStudent(form:NgForm){
-    //alert(this.vans.ac);
+  createStudent(){
+    if(this.students.age=="" || this.students.email=="" || this.students.fullName=="" || this.students.gender==""||
+      this.students.haddress=="" || this.students.iaddress=="" || this.students.phone_No=="" ){
+      alert('One or more fields are either invalid or empty');
+      return;
+    }
     let phoneno = ("+92").concat(this.students.phone_No!.toString())
     this.students.phone_No = phoneno;
     this.students.password = phoneno;

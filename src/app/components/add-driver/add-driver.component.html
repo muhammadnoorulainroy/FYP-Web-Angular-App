@@ -1,55 +1,99 @@
 <br />
-<form (ngSubmit)="createDriver()" ngNativeValidate>
+
+<mat-card class="mat-elevation-z8">
     <div class="d-flex flex-column align-items-center">
         <img class="van-img" src="../../../assets/images/driver_add.png" id="van-img" width="100%" height="100%"><br />
         <h2>Create New Driver</h2>
     </div>
-    <div class="row">
-        <div class="mb-3 col-6">
-            <label for="model" class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="fullName" [(ngModel)]='drivers.fullName' required>
-        </div>
-        <div class="mb-3 col-6">
-            <label for="stds" class="form-label">Gender</label>
-            <select class="form-select" name="gender" [(ngModel)]="drivers.gender" required>
-                <option value='Male' selected>Male</option>
-                <option value='Female'>Female</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group mb-3 col-6">
-            <label for="dateOfBirth">Date of birth</label>
-            <div class="input-group">
+    <form  #addDriverForm="ngForm" (ngSubmit)="addDriverForm.valid && createDriver()" >
+        <div class="row">
+            <div class="mb-3 col-4">
                 <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="dob" required [(ngModel)]='drivers.age'>
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput [formControl]="make" maxlength="40" [errorStateMatcher]="matcher" 
+                    placeholder="Muhammad Ali" name="fullName" [(ngModel)]="drivers.fullName">
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                    <mat-error *ngIf="(make.hasError('pattern') || !make.hasError('maxLength')) && !make.hasError('required')">
+                        Please enter valid Student Name (Name Cannot contain special characters and digits)
+                    </mat-error>
+                    <mat-error *ngIf="make.hasError('required')">
+                        Driver Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-3 col-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Gender</mat-label>
+                    <mat-select matInput name="gender" [formControl]="selectionItems" [errorStateMatcher]="matcher"
+                        [(ngModel)]="drivers.gender">
+                        <mat-option *ngFor="let type of gender" [value]="type.value">
+                            {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selectionItems.hasError('required')">
+                        Gender is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-3 col-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Date of Birth</mat-label>
+                    <input name="dob" matInput [min]="minDate" [max]="maxDate" (dateChange)="changeDatePicker($event)" [matDatepicker]="picker" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
             </div>
         </div>
-        <div class="mb-3 col-6">
-            <label for="year" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]='drivers.email' required>
+    
+        <div class="row">
+            <div class="mb-3 col-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" name="email" [formControl]="email" [errorStateMatcher]="matcher"
+                        placeholder="abc@xyz.com" [(ngModel)]="drivers.email">
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                    <mat-error
+                        *ngIf="email.hasError('email') && !email.hasError('required')">
+                        Please enter valid Email Address
+                    </mat-error>
+                    <mat-error *ngIf="email.hasError('required')">
+                        Email is is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-3 col-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Phone No.</mat-label>
+                    <input type="number" matInput name="phone" [formControl]="phone" [errorStateMatcher]="matcher"
+                        placeholder="03XXXXXXXXX" [(ngModel)]="drivers.phone_No">
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                    <mat-error
+                        *ngIf="(phone.hasError('min') || phone.hasError('max')) && !phone.hasError('required')">
+                        Please enter valid Phone No. (Phone No. must be of 11 digits)
+                    </mat-error>
+                    <mat-error *ngIf="phone.hasError('required')">
+                        Phone No. is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-3 col-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Home Address</mat-label>
+                    <input type="text" name="haddress" matInput [formControl]="haddress" maxlength="40" [errorStateMatcher]="matcher" 
+                    placeholder="Hostel City, Royal Avenue, Islamabad" [(ngModel)]="drivers.haddress">
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                   
+                    <mat-error *ngIf="haddress.hasError('required')">
+                      Home Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="mb-3 col-6">
-            <label for="SittingCap" class="form-label">Phone No.</label>
-            <input type="number" maxlength="11" minlength="11" class="form-control" name="phone"
-                [(ngModel)]='drivers.phone_No' required>
-        </div>
-        <div class="mb-3 col-6">
-            <label for="fuelType" class="form-label">Home Address</label>
-            <input type="text" class="form-control" name="haddress" [(ngModel)]='drivers.haddress' required>
-        </div>
-    </div>
-
-    <div class="row">
         <div class="d-flex justify-content-center">
-            <button class="add-van" type="submit"><span class="add-btn"> Create</span></button>
+            <button class="add-van" type="submit"><span class="add-btn"> Create Driver</span></button>
             <br>
         </div>
-    </div>
-</form>
+    </form>
+</mat-card>
+
+

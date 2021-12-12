@@ -37,3 +37,6 @@
     mat-form-field .example-full-width{
         width: 100%!important;
     }
+    .example-full-width {
+        width: 100%;
+      }

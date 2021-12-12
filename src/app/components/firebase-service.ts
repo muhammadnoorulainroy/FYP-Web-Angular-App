@@ -1,19 +1,20 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, snapshotChanges } from '@angular/fire/database';
-import { Driver, Student, Van } from '../DataModel';
+import { Complaint, Driver, Student, Van } from '../DataModel';
 
 export class Driverr{
   fullName!:string
   phone_No!:string
 }
- 
+
 @Injectable({
   providedIn: 'root'
 })
 export class VansService {
 
   availableDriverss:Driverr[] = [];
+  complaintDetails:Complaint = new Complaint
   availableDriversForStudents:Driverr[] = [];
   vanList!: AngularFireList<any>;
   driverPhoneNo!:string;
@@ -23,6 +24,7 @@ export class VansService {
   studentPhoneNo!:string;
   studentGender!:string;
   studentDetails!:Student;
+  userPhoneNo!:string
   
   constructor(private firebase: AngularFireDatabase) { }
 
@@ -93,6 +95,8 @@ export class VansService {
     });
   }
 
+  
+
   setDriverPhoneNo(phone:string){
     this.driverPhoneNo = phone;
   }
@@ -119,7 +123,27 @@ export class VansService {
   getVanNo(){
    return this.vanNo;
   }
+  setUserPhoneNo(phoneNo:string){
+    this.userPhoneNo= phoneNo
+  }
+  getUserPhoneNo(){
+   return this.userPhoneNo
+  }
 
+  setComplaintDetails(row:any){
+    this.complaintDetails.title = row.title;
+    this.complaintDetails.description =row.description;
+    this.complaintDetails.date= row.date;
+    this.complaintDetails.feedback = row.feedback;
+    this.complaintDetails.status =row.status;
+    this.complaintDetails.userClass = row.userClass;
+    this.complaintDetails.userPhone_No = row.userPhone_No;
+
+    // title:string, desc:string, date:string, userClass:string, phone:string, status:string, feedback:string
+  }
+  getComplaintDetails(){
+    return this.complaintDetails;
+  }
  
   
 }

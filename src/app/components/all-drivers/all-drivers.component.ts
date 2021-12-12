@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { VansService } from '../firebase-service';
 
 @Component({
@@ -30,7 +31,8 @@ export class AllDriversComponent implements OnInit {
   constructor(
     private vanService: VansService, 
     private firebase: AngularFireDatabase, 
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -91,33 +93,30 @@ export class AllDriversComponent implements OnInit {
     //this.dialog.open(AssignDriverToStudentComponent, dialogConfig);
   }
 
-  deleteTicket(row: any, rowid: number) {
-    if(confirm('Are you sure to delete driver '+row.fullName+" Permanently?\nThis operation cannot be undo.")){
+  deleteDriver(row: any, rowid: number) {
+    if (confirm('Are you sure to delete the Driver ' + row.fullName +" Permanently?\nThis operation cannot be undo.")) {
       this.dataSource.data.splice(rowid, 1);
-      this.dataSource._updateChangeSubscription(); // <-- Refresh the datasource
+      this.dataSource._updateChangeSubscription();
+      this.firebase.database.ref('Drivers/'+row.phone_No).remove() // <-- Refresh the datasource
+      alert('Driver ' + row.fullName +" has been deleted successfully");
     }
   }
 
   checkAssignedVanStudent(phone: string) {
-    let exists = false;
+    let vanExists = false;
+    let studentExists = false;
     this.firebase.database.ref('Drivers/' + phone).child('Van').once('value', function (snapshot) {
-      exists = snapshot.exists();
+      vanExists = snapshot.exists();
     })
     this.firebase.database.ref('Drivers/' + phone).child('students').once('value', function (snapshot) {
-      exists = snapshot.exists();
+      studentExists = snapshot.exists();
     })
-    return exists;
+    return (vanExists || studentExists);
   }
 
-  openViewStudentTab(row: any) {
-    this.vanService.setDriverPhoneNo(row.Driver);
-    let driver = this.firebase.database.ref('Drivers/'+row.Driver);
-    driver.once('value', (assignedDriver=>{
-      if(assignedDriver.child('Van').exists()){
-        this.vanService.setVanNo(assignedDriver.child('Van').val());
-       // this.router.navigate(["admin/studentdetails/viewassignedvantostudent"]);
-        return;
-      }
-    }))
+  openViewDriverTab(row: any) {
+    this.vanService.setDriverPhoneNo(row.phone_No);
+    this.vanService.setVanNo(row.Van);
+    this.router.navigate(["admin/driverdetails/viewassignedstudentstodriver"]);
   }
 }

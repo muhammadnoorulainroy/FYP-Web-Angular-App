@@ -26,6 +26,9 @@ import { ViewAssignedDriverToVanComponent } from './components/view-assigned-dri
 import { ViewStudentTabComponent } from './components/view-student-tab/view-student-tab.component';
 import { ViewVanStudentDetailsComponent } from './components/view-van-student-details/view-van-student-details.component';
 import { ViewAssignedDriverToStudentComponent } from './components/view-assigned-driver-to-student/view-assigned-driver-to-student.component';
+import { ViewDriverTabComponent } from './components/view-driver-tab/view-driver-tab.component';
+import { ViewAssignedStudentsToDriverComponent } from './components/view-assigned-students-to-driver/view-assigned-students-to-driver.component';
+import { ViewAssignedVanToDriverComponent } from './components/view-assigned-van-to-driver/view-assigned-van-to-driver.component';
 
 const routes: Routes = [
 
@@ -60,6 +63,13 @@ const routes: Routes = [
         children: [
           { path: 'viewassignedvantostudent', component: ViewVanStudentDetailsComponent, data: { title: 'Van Details' } },
           { path: 'viewassigneddrivertostudent', component: ViewAssignedDriverToStudentComponent, data: { title: 'Assigned Driver Details' } },
+        ]
+      },
+      {
+        path: 'driverdetails', component: ViewDriverTabComponent, data: { title: 'Driver Details' },
+        children: [
+          { path: 'viewassignedstudentstodriver', component: ViewAssignedStudentsToDriverComponent, data: { title: 'Assigned Students' } },
+          { path: 'viewassignedvantodriver', component: ViewAssignedVanToDriverComponent, data: { title: 'Assigned Van' } },
         ]
       },
 

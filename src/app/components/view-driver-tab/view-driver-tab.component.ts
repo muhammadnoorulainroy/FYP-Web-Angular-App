@@ -13,8 +13,8 @@ export class ViewDriverTabComponent implements OnInit {
   ngOnInit(): void {
   }
   navlinks = [
-    {path: 'viewassignedvantostudent', label:'Assigned Van'},
-    {path: 'viewassigneddrivertostudent', label:'Assigned Driver'},
+    {path: 'viewassignedstudentstodriver', label:'Assigned Students'},
+    {path: 'viewassignedvantodriver', label:'Assigned Van'},
   ];
   background: ThemePalette = undefined;
 

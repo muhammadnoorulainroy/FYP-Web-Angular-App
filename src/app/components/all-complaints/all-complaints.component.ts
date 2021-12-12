@@ -7,6 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { VansService } from '../firebase-service';
 import { ComplaintFeedbackComponent } from './complaint-feedback/complaint-feedback.component';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Complaint } from 'src/app/DataModel';
+import { ComplaintsTabComponent } from '../complaints-tab/complaints-tab.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-all-complaints',
@@ -16,8 +19,27 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class AllComplaintsComponent implements OnInit {
 
   displayedColumns: string[] = ['title','description', 'date','status','actions'];
- 
   dataSource!: MatTableDataSource<any>;
+
+  complaints:Complaint[] = []
+  totalComplaint=0;
+  stdsComplaints=0;
+  driversComplaints=0;
+  parentsComplaints=0;
+  resolved=0;
+  rejected=0;
+  pending=0;
+  inprog=0;
+
+  totlComp=false;
+    stdsComp=false;
+    drvComp=false;
+    prntComp=false;
+    resComp=false
+    pend=false;
+    rejComp=false;
+    inPrg=false;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -42,6 +64,9 @@ export class AllComplaintsComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     );
+    this.getComplaintsStats();
+
+    
   }
 
   applyFilter(event: Event) {
@@ -53,9 +78,12 @@ export class AllComplaintsComponent implements OnInit {
     }
   }
 
-  openDialog(){
+  openDialog(row:any){
+    this.vanService.setUserPhoneNo(row.userPhone_No);
+    this.vanService.setComplaintDetails(row);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "60%";
+    dialogConfig.width = "40%";
+    dialogConfig.maxHeight= '90vh'
     this.dialog.open(ComplaintFeedbackComponent, dialogConfig);
   }
 
@@ -77,5 +105,54 @@ export class AllComplaintsComponent implements OnInit {
       document.getElementById('status')!.innerHTML = row.status;
   }
 
-  
+  getComplaintsStats(){
+    this.complaints.splice(0,this.complaints.length)
+    this.totalComplaint=0;
+    this.stdsComplaints=0;
+    this.driversComplaints=0;
+    this.parentsComplaints=0;
+    this.resolved=0;
+    this.rejected=0;
+    this.pending=0;
+    this.inprog=0;
+    let complaints = this.firebase.database.ref('Complaints')
+    complaints.on('value', (allComplaints)=>{
+      //alert(allComplaints.key)
+      allComplaints.forEach(subRecords=>{
+        subRecords.forEach(currRecord=>{
+          let comp:Complaint = new Complaint;
+          comp.title =  currRecord.child('title').val();
+          comp.description = currRecord.child('description').val();
+          comp.date = currRecord.child('date').val();
+          comp.feedback = currRecord.child('feedback').val();
+          comp.status = currRecord.child('status').val()
+          comp.userClass = currRecord.child('userClass').val();
+          comp.userPhone_No = currRecord.child('userPhone_No').val();
+          this.totalComplaint++;
+          if(comp.status=="Resolved")
+            this.resolved++
+          else if(comp.status=="In Progress")
+            this.inprog++
+          else if(comp.status=="Pending")
+            this.pending++
+          else if(comp.status=="Rejected")
+            this.rejected++
+          if(comp.userClass=="Student")
+            this.stdsComplaints++
+          else if(comp.userClass="Driver")
+            this.driversComplaints++
+          else if(comp.userClass=="Parent")
+            this.parentsComplaints++;
+        })
+      })
+      this.totlComp=true;
+      this.stdsComp=true
+      this.drvComp=true
+      this.prntComp=true
+      this.resComp=true
+      this.pend=true
+      this.rejComp=true
+      this.inPrg=true
+    })
+  } 
 }

@@ -36,6 +36,7 @@ export class Driver {
             public age?: string,
             public gender?: string,
             public haddress?: string,
+            public password?:string
     ) { }
 }
 
@@ -77,6 +78,8 @@ export class Complaint {
             public title: string = "",
             public description: string = "",
             public status: string = "",
-            public Feedback: string = "",
+            public feedback: string = "",
+            public userClass:string="",
+            public userPhone_No:string=""
     ) { }
 }

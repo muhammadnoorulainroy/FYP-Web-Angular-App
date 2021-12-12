@@ -1,0 +1,172 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  *{
+    font-family: 'Poppins', sans-serif;
+  }
+
+.van-img{
+    box-sizing: border-box;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    margin:0;
+    border:1px solid #0082e6;
+    padding: 3px;
+    background-color: white;
+    overflow: hidden;
+    transition: all 1s;
+    }
+  
+  table {
+      width: 100%;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 20%;
+      margin-left: 10px;
+     
+    }
+    
+    td, th {
+      width: 25%;
+    }
+    th{
+      color: #fff;
+      background:rgb(4, 3, 70);
+      font-size: 14px;
+  }
+  
+  .assignBtn, .unassignBtn, .viewBtn{
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 2px 5px;
+    /* width: 200px;
+    height: 50px; */
+    text-align: center;
+    transition: 0.5s;
+    text-decoration: none;
+  }
+  
+  .viewBtn:hover:after{
+    content: "View";
+    padding-left: 7px;
+  }  
+  
+  .assignBtn:hover:after{
+    content: "Assign";
+    padding-left: 7px;
+  }  
+  
+  .unassignBtn:hover:after{
+    content: "Unassign";
+    padding-left: 7px;
+  }  
+  
+  .deleteBtn:hover:after{
+    content: "Delete";
+    padding-left: 7px;
+  }    
+  
+  .assignBtn:hover, .viewBtn:hover{
+    background-color: rgb(17, 100, 21);
+    color: #fff;
+    transition: 0.5s;
+  }
+  .deleteBtn:hover, .unassignBtn:hover{
+    background-color: rgb(136, 16, 16);
+    color: #fff;
+    transition: 0.5s;
+  }
+  
+  .deleteBtn{
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    color: red;
+    padding: 2px 5px;
+    /* width: 200px;
+    height: 50px; */
+    text-align: center;
+    transition: 0.5s;
+  }
+  
+  
+  .hide{
+    display: none;
+  }
+  
+  /* mat-table */
+  mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+  }
+
+  .mat-column-actions {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-fullName {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-phone {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 13% !important;
+    width: 13% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-homeAddr {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  .mat-column-schoolAddr {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    word-break:keep-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }

@@ -100,6 +100,7 @@ export class AddVanComponent implements OnInit {
       if(existingVan.exists())
         alert("Van "+ this.vans.vehicleNo + " already exists");
       else{
+        this.vans.vehicleNo = this.vans.vehicleNo?.toString();
         van.set(this.vans);
         alert('Van '+ this.vans.make+ " " +this.vans.model+" "+this.vans.year+' has been Added Successfully');
       }

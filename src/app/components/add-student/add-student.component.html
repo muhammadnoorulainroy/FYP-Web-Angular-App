@@ -67,7 +67,7 @@
         <img class="van-img" src="../../../assets/images/add_student.png" id="van-img" width="100%" height="100%"><br />
         <h2>Create New Student</h2>
     </div>
-    <form  #addStudentForm="ngForm" (ngSubmit)="addStudentForm.valid && createStudent(addStudentForm)" >
+    <form  #addStudentForm="ngForm" (ngSubmit)="addStudentForm.valid && createStudent()" >
         <div class="row">
             <div class="mb-3 col-4">
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -100,9 +100,12 @@
             <div class="mb-3 col-4">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Date of Birth</mat-label>
-                    <input name="dob" matInput [min]="minDate" [max]="maxDate" (dateChange)="changeDatePicker($event)" [matDatepicker]="picker" required>
+                    <input name="dob" matInput [min]="minDate" [formControl]="selectionItems" [max]="maxDate" (dateChange)="changeDatePicker($event)" [matDatepicker]="picker" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="selectionItems.hasError('required')">
+                        Date of Birth is <strong>required</strong>
+                    </mat-error>
                   </mat-form-field>
             </div>
         </div>
